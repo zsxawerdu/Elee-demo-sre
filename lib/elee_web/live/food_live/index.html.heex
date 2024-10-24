@@ -1,0 +1,11 @@
+<.header>
+  Listing Foods
+</.header>
+
+<.table id="mobile" rows={@streams.mobile}>
+  <:col :let={{locationid, mobile}} label="Name"><%= mobile["Applicant"] %></:col>
+  <:col :let={{locationid, mobile}} label="Location"><%= mobile["LocationDescription"] %></:col>
+  <:col :let={{locationid, mobile}} label="Truck"><%= mobile["FacilityType"] %></:col>
+  <:col :let={{locationid, mobile}} label="Cost"><%= mobile["Zip Codes"] %></:col>
+  <:col :let={{locationid, mobile}} label="Hours"><%= mobile["dayshours"] %></:col>
+</.table>

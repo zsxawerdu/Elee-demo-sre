@@ -1,0 +1,30 @@
+<.header>
+  Food <%= @food.id %>
+  <:subtitle>This is a food record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/foods/#{@food}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit food</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @food.name %></:item>
+  <:item title="Location"><%= @food.location %></:item>
+  <:item title="Rating"><%= @food.rating %></:item>
+  <:item title="Cost"><%= @food.cost %></:item>
+  <:item title="Hours"><%= @food.hours %></:item>
+</.list>
+
+<.back navigate={~p"/foods"}>Back to foods</.back>
+
+<.modal :if={@live_action == :edit} id="food-modal" show on_cancel={JS.patch(~p"/foods/#{@food}")}>
+  <.live_component
+    module={EleeWeb.FoodLive.FormComponent}
+    id={@food.id}
+    title={@page_title}
+    action={@live_action}
+    food={@food}
+    patch={~p"/foods/#{@food}"}
+  />
+</.modal>
